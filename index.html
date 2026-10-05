@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Medio Ambiente - Presentación</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(180deg, #e8f5e9 0%, #c8e6c9 40%, #a5d6a7 100%);
+            color: #1b4332;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Árboles decorativos animados */
+        .tree {
+            position: fixed;
+            bottom: 0;
+            width: 80px;
+            height: 140px;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.18;
+        }
+
+        .tree::before {
+            content: '';
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 40px solid transparent;
+            border-right: 40px solid transparent;
+            border-bottom: 70px solid #2d6a4f;
+            animation: sway 6s ease-in-out infinite;
+        }
+
+        .tree::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 14px;
+            height: 45px;
+            background: #5d4037;
+            border-radius: 4px;
+        }
+
+        .tree:nth-child(1) { left: 5%; animation-delay: 0s; }
+        .tree:nth-child(2) { left: 18%; height: 160px; opacity: 0.15; animation-delay: 1s; }
+        .tree:nth-child(3) { right: 8%; left: auto; height: 150px; animation-delay: 2s; }
+        .tree:nth-child(4) { right: 22%; left: auto; height: 130px; opacity: 0.12; animation-delay: 0.5s; }
+
+        @keyframes sway {
+            0%, 100% { transform: translateX(-50%) rotate(-2deg); }
+            50% { transform: translateX(-50%) rotate(2deg); }
+        }
+
+        /* Hojas cayendo */
+        .leaf {
+            position: fixed;
+            width: 12px;
+            height: 12px;
+            background: #81c784;
+            border-radius: 0 80% 0 80%;
+            opacity: 0.5;
+            z-index: 0;
+            pointer-events: none;
+            animation: fall linear infinite;
+        }
+
+        .leaf:nth-child(5) { left: 10%; animation-duration: 12s; animation-delay: 0s; }
+        .leaf:nth-child(6) { left: 30%; animation-duration: 15s; animation-delay: 3s; background: #a5d6a7; }
+        .leaf:nth-child(7) { left: 55%; animation-duration: 11s; animation-delay: 1s; background: #66bb6a; }
+        .leaf:nth-child(8) { left: 75%; animation-duration: 14s; animation-delay: 5s; }
+        .leaf:nth-child(9) { left: 90%; animation-duration: 13s; animation-delay: 2s; background: #c8e6c9; }
+
+        @keyframes fall {
+            0% { top: -20px; transform: rotate(0deg) translateX(0); }
+            100% { top: 100vh; transform: rotate(360deg) translateX(40px); }
+        }
+
+        header {
+            background: linear-gradient(135deg, #1b4332, #2d6a4f, #40916c);
+            color: white;
+            text-align: center;
+            padding: 55px 20px;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        header h1 {
+            font-size: 2.9rem;
+            margin-bottom: 12px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 1.25rem;
+            opacity: 0.95;
+        }
+
+        main {
+            max-width: 980px;
+            margin: 45px auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        section {
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 18px;
+            padding: 38px;
+            margin-bottom: 38px;
+            box-shadow: 0 10px 30px rgba(27, 67, 50, 0.12);
+            border: 1px solid rgba(45, 106, 79, 0.15);
+            backdrop-filter: blur(6px);
+        }
+
+        section h2 {
+            color: #1b4332;
+            font-size: 1.85rem;
+            margin-bottom: 18px;
+            padding-bottom: 12px;
+            border-bottom: 4px solid #52b788;
+            display: inline-block;
+        }
+
+        section p {
+            font-size: 1.08rem;
+            margin-bottom: 14px;
+            color: #2d3436;
+        }
+
+        .imagen {
+            width: 100%;
+            max-height: 340px;
+            object-fit: cover;
+            border-radius: 14px;
+            margin: 22px 0;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+            border: 3px solid #95d5b2;
+        }
+
+        .destacado {
+            background: linear-gradient(90deg, #d8f3dc, #b7e4c7);
+            padding: 18px 24px;
+            border-radius: 12px;
+            border-left: 6px solid #2d6a4f;
+            margin: 22px 0;
+            font-weight: 500;
+            color: #1b4332;
+        }
+
+        ul {
+            margin: 16px 0 16px 28px;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+            color: #2d3436;
+        }
+
+        ul li strong {
+            color: #1b4332;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #1b4332, #081c15);
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+            margin-top: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        footer p {
+            opacity: 0.9;
+            margin: 4px 0;
+        }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 2.1rem; }
+            section { padding: 26px 20px; }
+            .tree { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Árboles decorativos -->
+    <div class="tree"></div>
+    <div class="tree"></div>
+    <div class="tree"></div>
+    <div class="tree"></div>
+
+    <!-- Hojas cayendo -->
+    <div class="leaf"></div>
+    <div class="leaf"></div>
+    <div class="leaf"></div>
+    <div class="leaf"></div>
+    <div class="leaf"></div>
+
+    <header>
+        <h1>🌱 El Medio Ambiente</h1>
+        <p>Cuidar nuestro planeta es responsabilidad de todos</p>
+    </header>
+
+    <main>
+
+        <!-- Sección 1 -->
+        <section>
+            <h2>1. ¿Qué es el Medio Ambiente?</h2>
+            <img src="images/medioambiente1.jpg" alt="Naturaleza y medio ambiente" class="imagen">
+            <p>
+                El medio ambiente es el conjunto de elementos naturales y artificiales que rodean a los seres vivos. 
+                Incluye el aire, el agua, el suelo, las plantas, los animales y también las ciudades donde vivimos.
+            </p>
+            <p>
+                Es el hogar de todos los seres vivos y de él dependemos para obtener comida, agua, oxígeno y recursos naturales.
+            </p>
+            <div class="destacado">
+                Sin un medio ambiente sano, la vida en la Tierra no sería posible.
+            </div>
+        </section>
+
+        <!-- Sección 2 -->
+        <section>
+            <h2>2. Problemas Ambientales</h2>
+            <img src="images/contaminacion.jpg" alt="Contaminación ambiental" class="imagen">
+            <p>
+                Actualmente enfrentamos varios problemas graves que afectan al planeta:
+            </p>
+            <ul>
+                <li><strong>Contaminación del aire:</strong> producida por fábricas, autos y quema de combustibles.</li>
+                <li><strong>Contaminación del agua:</strong> por basura, plásticos y productos químicos.</li>
+                <li><strong>Deforestación:</strong> tala de bosques que destruye el hábitat de muchos animales.</li>
+                <li><strong>Cambio climático:</strong> aumento de la temperatura global por los gases de efecto invernadero.</li>
+                <li><strong>Pérdida de biodiversidad:</strong> muchas especies de plantas y animales están en peligro de extinción.</li>
+            </ul>
+        </section>
+
+        <!-- Sección 3 - NUEVA: Los Árboles -->
+        <section>
+            <h2>3. La Importancia de los Árboles</h2>
+            <img src="images/arboles.jpg" alt="Bosque de árboles" class="imagen">
+            <p>
+                Los árboles son uno de los elementos más importantes del medio ambiente. 
+                Actúan como los “pulmones” del planeta porque producen el oxígeno que respiramos 
+                y absorben el dióxido de carbono (CO₂).
+            </p>
+            <p>
+                Además de limpiar el aire, los árboles cumplen muchas otras funciones vitales:
+            </p>
+            <ul>
+                <li><strong>Regulan la temperatura:</strong> dan sombra y refrescan el ambiente.</li>
+                <li><strong>Protegen el suelo:</strong> evitan la erosión con sus raíces.</li>
+                <li><strong>Son hogar de animales:</strong> miles de especies viven en los bosques.</li>
+                <li><strong>Conservan el agua:</strong> ayudan a mantener los caudales de ríos y napas.</li>
+                <li><strong>Mejoran nuestra salud:</strong> reducen el estrés y mejoran la calidad del aire.</li>
+            </ul>
+            <div class="destacado">
+                Un solo árbol puede absorber hasta 150 kg de CO₂ al año y producir oxígeno para 4 personas.
+            </div>
+        </section>
+
+        <!-- Sección 4 -->
+        <section>
+            <h2>4. ¿Qué podemos hacer?</h2>
+            <img src="images/reciclaje.jpg" alt="Reciclaje y cuidado del planeta" class="imagen">
+            <p>
+                Aunque los problemas parecen grandes, cada persona puede contribuir con pequeñas acciones diarias:
+            </p>
+            <ul>
+                <li>Reducir, reutilizar y reciclar (las 3R).</li>
+                <li>Ahorrar agua y energía eléctrica.</li>
+                <li>Usar menos plástico de un solo uso.</li>
+                <li>Plantar árboles y cuidar las áreas verdes.</li>
+                <li>Usar el transporte público, bicicleta o caminar cuando sea posible.</li>
+                <li>No tirar basura en la calle ni en ríos.</li>
+            </ul>
+            <div class="destacado">
+                Cada acción cuenta. Si todos aportamos un poco, el cambio puede ser enorme.
+            </div>
+        </section>
+
+        <!-- Sección 5 -->
+        <section>
+            <h2>5. Un futuro sostenible</h2>
+            <img src="images/naturaleza.jpg" alt="Naturaleza protegida" class="imagen">
+            <p>
+                Proteger el medio ambiente no es solo una responsabilidad de los gobiernos o las empresas. 
+                Es una tarea de toda la sociedad.
+            </p>
+            <p>
+                Si educamos a las nuevas generaciones y tomamos decisiones conscientes hoy, 
+                podremos dejar un planeta más limpio y saludable para el futuro.
+            </p>
+            <div class="destacado">
+                El mejor momento para cuidar el planeta fue ayer. El segundo mejor momento es ahora.
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Presentación sobre el Medio Ambiente</p>
+        <p>Hecho con 💚 para cuidar nuestro planeta</p>
+    </footer>
+
+</body>
+</html>
